@@ -1,6 +1,8 @@
 build:
 	g++ -std=c++14 \
 	./src/*.cpp \
+	-Wall \
+	-Wextra \
 	-o game \
 	-I"./lib/lua" \
 	-L"./lib/lua" \
