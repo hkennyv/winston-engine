@@ -1,2 +1,17 @@
-game:
-	g++ src/main.cpp -o play -I include -L lib -l SDL2-2.0.0
+build:
+	g++ -std=c++14 \
+	./src/*.cpp \
+	-o game \
+	-I"./lib/lua" \
+	-L"./lib/lua" \
+	-llua \
+	-lSDL2 \
+	-lSDL2_image \
+	-lSDL2_ttf \
+	-lSDL2_mixer;
+
+clean:
+	rm ./game;
+
+run:
+	./game;

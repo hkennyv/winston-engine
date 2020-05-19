@@ -1,1 +1,7 @@
 .DS_Store
+
+# game binary
+game
+
+# don't commit libs
+lib
