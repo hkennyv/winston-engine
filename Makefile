@@ -3,6 +3,7 @@ build:
 	./src/*.cpp \
 	-Wall \
 	-Wextra \
+	-Wpedantic \
 	-o game \
 	-I"./lib/lua" \
 	-L"./lib/lua" \
