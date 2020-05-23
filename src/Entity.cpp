@@ -31,6 +31,6 @@ bool Entity::IsActive() const {
 
 void Entity::ListAllComponents() {
     for (auto& component: components) {
-        std::cout << '\t' << "Component<" << typeid(component).name() << ">" << std::endl;
+        std::cout << '\t' << "Component<" << component->name << ">" << std::endl;
     }
 }
