@@ -1,10 +1,9 @@
 build:
 	g++ -std=c++14 \
 	./src/*.cpp \
-	-Wfatal-errors \
-	# -Wall \
-	# -Wextra \
-	# -Wpedantic \
+	-Wall \
+	-Wextra \
+	-Wpedantic \
 	-o game \
 	-I"./lib/lua" \
 	-L"./lib/lua" \
