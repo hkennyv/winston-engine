@@ -4,6 +4,9 @@
 #include "./Constants.h"
 #include "./Game.h"
 
+EntityManager manager;
+SDL_Renderer* Game::renderer;
+
 Game::Game() {
     this->isRunning = false;
 }
@@ -16,8 +19,6 @@ bool Game::IsRunning() const {
     return this->isRunning;
 }
 
-glm::vec2 projectilePos = glm::vec2(0.0f, 0.0f);
-glm::vec2 projectileVel = glm::vec2(20.0f, 20.0f);
 
 void Game::Initialize(int width, int height) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -85,25 +86,16 @@ void Game::Update() {
     // sets new ticks for the current frame to be used in the next pass
     ticksLastFrame = SDL_GetTicks();
 
-    projectilePos = glm::vec2(
-            projectilePos.x + projectileVel.x * deltaTime,
-            projectilePos.y + projectileVel.y * deltaTime
-    );
+    // TODO: here we call manager.update to update all entities
+    manager.Update(deltaTime);
 }
 
 void Game::Render() {
     SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Rect projectile {
-        (int) projectilePos.x,
-        (int) projectilePos.y,
-        10,
-        10
-    };
-
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &projectile);
+    // TODO: here we call the manager.render to render all entities
+    manager.Render();
 
     SDL_RenderPresent(renderer);
 }
