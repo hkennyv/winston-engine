@@ -23,6 +23,7 @@ public:
     void Render();
     void Destroy();
     bool IsActive() const;
+    void ListAllComponents();
 
     // templates in c++
     // http://www.cplusplus.com/doc/oldtutorial/templates/

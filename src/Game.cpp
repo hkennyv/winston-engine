@@ -3,6 +3,7 @@
 
 #include "./Constants.h"
 #include "./Game.h"
+#include "./components/TransformComponent.h"
 
 EntityManager manager;
 SDL_Renderer* Game::renderer;
@@ -48,6 +49,9 @@ void Game::Initialize(int width, int height) {
     }
 
     isRunning = true;
+
+    LoadLevel(0);
+
     std::cout << "Initialization complete! :)" << std::endl;
     return;
 }
@@ -70,6 +74,22 @@ void Game::ProcessInput() {
     }
 }
 
+
+void Game::LoadLevel(int levelNumber) {
+    // TODO: add entities and add components to entities
+    Entity& newEntity1(manager.AddEntity("projectile1"));
+    newEntity1.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
+
+    Entity& newEntity2(manager.AddEntity("projectile2"));
+    newEntity2.AddComponent<TransformComponent>(0, 0, 10, 10, 22, 22, 1);
+
+    Entity& newEntity3(manager.AddEntity("projectile3"));
+    newEntity3.AddComponent<TransformComponent>(800, 600, -20, -5, 12, 12, 1);
+
+    manager.ListAllEntities();
+}
+
+
 void Game::Update() {
     int timeToWait = FRAME_TARGET_TIME - (SDL_GetTicks() - ticksLastFrame);
 
@@ -86,7 +106,6 @@ void Game::Update() {
     // sets new ticks for the current frame to be used in the next pass
     ticksLastFrame = SDL_GetTicks();
 
-    // TODO: here we call manager.update to update all entities
     manager.Update(deltaTime);
 }
 
@@ -94,7 +113,8 @@ void Game::Render() {
     SDL_SetRenderDrawColor(renderer, 21, 21, 21, 255);
     SDL_RenderClear(renderer);
 
-    // TODO: here we call the manager.render to render all entities
+    if (manager.HasNoEntities()) return;
+
     manager.Render();
 
     SDL_RenderPresent(renderer);
