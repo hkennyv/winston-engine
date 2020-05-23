@@ -23,6 +23,18 @@ public:
     void Render();
     void Destroy();
     bool IsActive() const;
+
+    // templates in c++
+    // http://www.cplusplus.com/doc/oldtutorial/templates/
+    template <typename T, typename... Targs>
+    T& AddComponent(Targs&&... args) {
+        T* component(new T(std::forward<Targs>(args)...));
+        component->owner = this;
+        components.emplace_back(component);
+        component->Initialize();
+
+        return *component;
+    };
 };
 
 #endif
