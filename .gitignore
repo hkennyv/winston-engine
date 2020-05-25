@@ -1,3 +1,5 @@
+.vscode/
+.ccls-cache/
 .DS_Store
 
 # game binary
