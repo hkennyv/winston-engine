@@ -8,6 +8,8 @@
 #include "./Component.h"
 #include "./EntityManager.h"
 
+class AssetManager;
+
 class Game {
 private:
     SDL_Window* window;
@@ -19,6 +21,8 @@ public:
     ~Game();
 
     static SDL_Renderer* renderer;
+    static AssetManager* assetManager;
+
     int ticksLastFrame;
     void LoadLevel(int levelNumber);
     bool IsRunning() const;

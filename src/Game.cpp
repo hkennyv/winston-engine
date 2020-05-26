@@ -3,9 +3,13 @@
 
 #include "./Constants.h"
 #include "./Game.h"
+#include "./AssetManager.h"
 #include "./components/TransformComponent.h"
+#include "./components/SpriteComponent.h"
 
 EntityManager manager;
+AssetManager* Game::assetManager = new AssetManager(&manager);
+
 SDL_Renderer* Game::renderer;
 
 Game::Game() {
@@ -76,15 +80,14 @@ void Game::ProcessInput() {
 
 
 void Game::LoadLevel(int levelNumber) {
-    // TODO: add entities and add components to entities
-    Entity& newEntity1(manager.AddEntity("projectile1"));
+    // Start including new assets to assetmanager
+    std::string textureFilePath = "./assets/images/tank-big-right.png";
+    assetManager->AddTexture("tank-image", textureFilePath.c_str());
+
+    // start including entities and components to them
+    Entity& newEntity1(manager.AddEntity("tank"));
     newEntity1.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
-
-    Entity& newEntity2(manager.AddEntity("projectile2"));
-    newEntity2.AddComponent<TransformComponent>(0, 0, 10, 10, 22, 22, 1);
-
-    Entity& newEntity3(manager.AddEntity("projectile3"));
-    newEntity3.AddComponent<TransformComponent>(800, 600, -20, -5, 12, 12, 1);
+    newEntity1.AddComponent<SpriteComponent>("tank-image");
 
     manager.ListAllEntities();
 }

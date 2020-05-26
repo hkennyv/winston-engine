@@ -1,7 +1,6 @@
 #ifndef ENTITYMANAGER_H
 #define ENTITYMANAGER_H
 
-#include <string>
 #include <vector>
 #include "./Entity.h"
 #include "./Component.h"
