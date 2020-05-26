@@ -89,6 +89,10 @@ void Game::LoadLevel(int levelNumber) {
     newEntity1.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
     newEntity1.AddComponent<SpriteComponent>("tank-image");
 
+    Entity& newEntity2(manager.AddEntity("tank2"));
+    newEntity2.AddComponent<TransformComponent>(0, 0, 25, 25, 32, 32, 1);
+    newEntity2.AddComponent<SpriteComponent>("tank-image");
+
     manager.ListAllEntities();
 }
 
