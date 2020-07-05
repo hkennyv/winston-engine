@@ -28,6 +28,21 @@ public:
   void Update(float deltaTime) override {
     position.x += velocity.x * deltaTime;
     position.y += velocity.y * deltaTime;
+
+    // TODO: clamping boundaries DOESN'T factor in SCALE
+    if (position.x > (WINDOW_WIDTH - 1 - width))
+      position.x = WINDOW_WIDTH - 1 - width;
+
+    if (position.x < 0)
+      position.x = 0;
+
+    if (position.y > (WINDOW_HEIGHT - 1 - height))
+      position.y = WINDOW_HEIGHT - 1 - height;
+
+    if (position.y < 0)
+      position.y = 0;
+
+    std::cout << "x: " << position.x << " y: " << position.y << std::endl;
   }
 
   void Render() override {
