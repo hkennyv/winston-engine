@@ -41,8 +41,6 @@ public:
 
     if (position.y < 0)
       position.y = 0;
-
-    std::cout << "x: " << position.x << " y: " << position.y << std::endl;
   }
 
   void Render() override {
