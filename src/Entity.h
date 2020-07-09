@@ -42,15 +42,19 @@ public:
     return *component;
   };
 
+  template <typename T> bool HasComponent() const {
+    return componentTypeMap.count(&typeid(T));
+  }
+
   // want to keep track of the types of the components
   template <typename T> T *GetComponent() {
     return static_cast<T *>(componentTypeMap[&typeid(T)]);
   }
 
-  // check if we have a component
-  template <typename T> bool HasComponent() const {
-    return componentTypeMap.find(&typeid(T)) == componentTypeMap.end();
-  }
+  // // check if we have a component
+  // template <typename T> bool HasComponent() const {
+  //   return componentTypeMap.find(&typeid(T)) == componentTypeMap.end();
+  // }
 };
 
 #endif
