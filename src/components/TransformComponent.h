@@ -29,18 +29,18 @@ public:
     position.x += velocity.x * deltaTime;
     position.y += velocity.y * deltaTime;
 
-    // TODO: clamping boundaries DOESN'T factor in SCALE
-    if (position.x > (WINDOW_WIDTH - 1 - width))
-      position.x = WINDOW_WIDTH - 1 - width;
+    // // TODO: clamping boundaries DOESN'T factor in SCALE
+    // if (position.x > (WINDOW_WIDTH - 1 - width))
+    //   position.x = WINDOW_WIDTH - 1 - width;
 
-    if (position.x < 0)
-      position.x = 0;
+    // if (position.x < 0)
+    //   position.x = 0;
 
-    if (position.y > (WINDOW_HEIGHT - 1 - height))
-      position.y = WINDOW_HEIGHT - 1 - height;
+    // if (position.y > (WINDOW_HEIGHT - 1 - height))
+    //   position.y = WINDOW_HEIGHT - 1 - height;
 
-    if (position.y < 0)
-      position.y = 0;
+    // if (position.y < 0)
+    //   position.y = 0;
   }
 
   void Render() override {

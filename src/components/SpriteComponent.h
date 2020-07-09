@@ -95,8 +95,8 @@ public:
     }
     sourceRect.y = animationIndex * transform->height;
 
-    destRect.x = static_cast<int>(transform->position.x);
-    destRect.y = static_cast<int>(transform->position.y);
+    destRect.x = static_cast<int>(transform->position.x) - (isFixed ? 0 : static_cast<int>(Game::camera.x));
+    destRect.y = static_cast<int>(transform->position.y) - (isFixed ? 0 : static_cast<int>(Game::camera.y));
     destRect.w = transform->width * transform->scale;
     destRect.h = transform->height * transform->scale;
   }
