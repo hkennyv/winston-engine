@@ -81,20 +81,20 @@ void Game::LoadLevel(int levelNumber) {
   assetManager->AddTexture("radar-image", std::string("./assets/images/radar.png").c_str());
   assetManager->AddTexture("jungle-tiletexture", std::string("./assets/tilemaps/jungle.png").c_str());
 
-  map = new Map("jungle-tiletexture", 1, 32);
-  map->LoadMap("./assets/tilemaps/jungle.map", 25, 20);
+  map = new Map(std::string("jungle-tiletexture"), 2, 32);
+  map->LoadMap(std::string("./assets/tilemaps/jungle.map"), 25, 20);
 
   // start including entities and components to them
-  Entity& chopperEntity(manager.AddEntity("chopper"));
+  Entity& chopperEntity(manager.AddEntity("chopper", PLAYER_LAYER));
   chopperEntity.AddComponent<TransformComponent>(240, 106, 0, 0, 32, 32, 1);
   chopperEntity.AddComponent<SpriteComponent>("chopper-image", 2, 90, true, false);
   chopperEntity.AddComponent<KeyboardControlComponent>("w", "s", "d", "a", " ");
 
-  Entity &tankEntity(manager.AddEntity("tank"));
+  Entity &tankEntity(manager.AddEntity("tank", ENEMY_LAYER));
   tankEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
   tankEntity.AddComponent<SpriteComponent>("tank-image");
 
-  Entity& radarEntity(manager.AddEntity("radar"));
+  Entity& radarEntity(manager.AddEntity("radar", UI_LAYER));
   radarEntity.AddComponent<TransformComponent>(720, 15, 0, 0, 64, 64, 1);
   radarEntity.AddComponent<SpriteComponent>("radar-image", 8, 150, false, true);
 
