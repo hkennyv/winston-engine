@@ -3,6 +3,8 @@ build:
 	./src/*.cpp \
 	-Wfatal-errors \
 	-o game \
+	-I"./lib/glm" \
+	-L"./lib/glm" \
 	-I"./lib/lua" \
 	-L"./lib/lua" \
 	-llua \
@@ -18,6 +20,8 @@ debug:
 	-Wextra \
 	-Wpedantic \
 	-o game \
+	-I"./lib/glm" \
+	-L"./lib/glm" \
 	-I"./lib/lua" \
 	-L"./lib/lua" \
 	-llua \
