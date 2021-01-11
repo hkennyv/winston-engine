@@ -1,0 +1,18 @@
+on: [push, pull_request]
+
+name: Build
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: make
+        run: make
+
+  build-debug:
+    name: Build Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: make debug
+        run: make debug
