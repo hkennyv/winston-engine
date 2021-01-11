@@ -10,6 +10,11 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v2
 
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libglm-dev
+
       - name: make
         run: make
 
@@ -19,6 +24,11 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install -y libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev libglm-dev
 
       - name: make debug
         run: make debug
