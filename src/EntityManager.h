@@ -11,6 +11,8 @@ class EntityManager {
 private:
     std::vector<Entity*> entities;
 
+    bool isDebug = false;
+
 public:
     void ClearData();
     void Update(float deltaTime);
@@ -20,6 +22,8 @@ public:
     std::vector<Entity*> GetEntities() const;
     std::vector<Entity*> GetEntitiesByLayer(LayerType layer) const;
     std::string CheckEntityCollisions(Entity& entity) const;
+    bool IsDebug() const;
+    void ToggleDebug();
     unsigned int GetEntityCount();
     void ListAllEntities();
 

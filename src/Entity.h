@@ -28,6 +28,8 @@ public:
   void Render();
   void Destroy();
   bool IsActive() const;
+  bool IsDebug() const;
+  void ToggleDebug();
   void ListAllComponents() const;
 
   // templates in c++

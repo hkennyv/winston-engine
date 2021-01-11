@@ -6,6 +6,7 @@
 #include <SDL2/SDL_ttf.h>
 #include "./Entity.h"
 #include "./Component.h"
+#include "./AssetManager.h"
 #include "./EntityManager.h"
 
 class AssetManager;

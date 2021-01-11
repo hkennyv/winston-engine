@@ -63,6 +63,10 @@ std::string EntityManager::CheckEntityCollisions(Entity& myEntity) const {
     return std::string();
 }
 
+bool EntityManager::IsDebug() const { return this->isDebug; }
+
+void EntityManager::ToggleDebug() { this->isDebug = !this->isDebug; }
+
 unsigned int EntityManager::GetEntityCount() {
     return entities.size();
 }

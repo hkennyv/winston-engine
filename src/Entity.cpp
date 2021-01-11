@@ -26,6 +26,10 @@ void Entity::Destroy() { this->isActive = false; }
 
 bool Entity::IsActive() const { return this->isActive; }
 
+bool Entity::IsDebug() const { return manager.IsDebug(); }
+
+void Entity::ToggleDebug() { manager.ToggleDebug(); }
+
 void Entity::ListAllComponents() const {
   for (auto mapElement : componentTypeMap) {
     std::cout << '\t' << "Component<" << mapElement.second->name << '>'

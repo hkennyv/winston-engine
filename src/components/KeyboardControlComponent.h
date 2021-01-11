@@ -3,6 +3,7 @@
 
 #include "../Game.h"
 #include "../EntityManager.h"
+#include "../components/ColliderComponent.h"
 #include "../components/TransformComponent.h"
 #include "../components/SpriteComponent.h"
 
@@ -14,17 +15,20 @@ public:
     std::string rightKey;
     std::string leftKey;
     std::string shootKey;
+    std::string debugKey;
 
     TransformComponent *transform;
     SpriteComponent *sprite;
+    ColliderComponent *collider;
 
     KeyboardControlComponent() {}
-    KeyboardControlComponent(std::string upKey, std::string downKey, std::string rightKey, std::string leftKey, std::string shootKey) {
+    KeyboardControlComponent(std::string upKey, std::string downKey, std::string rightKey, std::string leftKey, std::string shootKey, std::string debugKey) {
         this->upKey = GetSDLKeyStringCode(upKey);
         this->downKey = GetSDLKeyStringCode(downKey);
         this->rightKey = GetSDLKeyStringCode(rightKey);
         this->leftKey = GetSDLKeyStringCode(leftKey);
         this->shootKey = GetSDLKeyStringCode(shootKey);
+        this->debugKey = GetSDLKeyStringCode(debugKey);
     }
 
     std::string GetSDLKeyStringCode(std::string key) {
@@ -32,13 +36,17 @@ public:
         if (key.compare("down") == 0) return "1073741905";
         if (key.compare("right") == 0) return "1073741903";
         if (key.compare("left") == 0) return "1073741904";
-        if (key.compare("space") == 0) return "32";
+        if (key.compare("f2") == 0) return "1073741883";
+        if (key.compare(" ") == 0) return "32";
         return std::to_string(static_cast<int>(key[0]));
     }
 
     void Initialize() override {
         transform = owner->GetComponent<TransformComponent>();
         sprite = owner->GetComponent<SpriteComponent>();
+        collider = owner->GetComponent<ColliderComponent>();
+
+        std::cout << transform << sprite << collider << '\n';
     }
 
     void Update(float deltaTime) override {
@@ -65,7 +73,12 @@ public:
                 sprite->Play("LeftAnimation");
             }
             if (keyCode.compare(shootKey) == 0) {
-
+                std::cout << "shoot!\n";
+            }
+            if (keyCode.compare(debugKey) == 0) {
+                if (collider != NULL) {
+                    owner->ToggleDebug();
+                }
             }
         }
 
@@ -84,6 +97,9 @@ public:
                 transform->velocity.x = 0;
             }
             if (keyCode.compare(shootKey) == 0) {
+
+            }
+            if (keyCode.compare(debugKey) == 0) {
 
             }
         }

@@ -84,16 +84,18 @@ void Game::LoadLevel(int levelNumber) {
       std::string("./assets/images/chopper-spritesheet.png").c_str());
   assetManager->AddTexture("radar-image", std::string("./assets/images/radar.png").c_str());
   assetManager->AddTexture("jungle-tiletexture", std::string("./assets/tilemaps/jungle.png").c_str());
+  assetManager->AddTexture("collision-texture", std::string("./assets/images/collision-texture.png").c_str());
 
   map = new Map(std::string("jungle-tiletexture"), 2, 32);
   map->LoadMap(std::string("./assets/tilemaps/jungle.map"), 25, 20);
 
   // start including entities and components to them
+  // make sure to put `KeyboardControlComponent` LAST
   // Entity& chopperEntity(manager.AddEntity("chopper", PLAYER_LAYER));
   player.AddComponent<TransformComponent>(240, 106, 0, 0, 32, 32, 1);
   player.AddComponent<SpriteComponent>("chopper-image", 2, 90, true, false);
-  player.AddComponent<KeyboardControlComponent>("w", "s", "d", "a", " ");
   player.AddComponent<ColliderComponent>("player", 240, 106, 32, 32);
+  player.AddComponent<KeyboardControlComponent>("w", "s", "d", "a", " ", "f2");
 
   Entity &tankEntity(manager.AddEntity("tank", ENEMY_LAYER));
   tankEntity.AddComponent<TransformComponent>(0, 0, 20, 20, 32, 32, 1);
