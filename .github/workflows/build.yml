@@ -7,6 +7,9 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
       - name: make
         run: make
 
@@ -14,5 +17,8 @@ jobs:
     name: Build Debug
     runs-on: ubuntu-latest
     steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
       - name: make debug
         run: make debug
